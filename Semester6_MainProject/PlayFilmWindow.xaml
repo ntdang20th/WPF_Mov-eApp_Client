@@ -1,0 +1,52 @@
+﻿<Window x:Class="Semester6_MainProject.PlayFilmWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Semester6_MainProject"
+        xmlns:uc ="clr-namespace:Semester6_MainProject.MyUserControl"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:viewModel="clr-namespace:Semester6_MainProject.MVVM.ViewModel"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Height="450" Width="800" Closing="Window_Closing">
+
+    <Window.DataContext>
+        <viewModel:PlayPhimViewModel/>
+    </Window.DataContext>
+
+
+    <Grid Name="mainGrid" Background="Black" >
+
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseEnter">
+                <i:InvokeCommandAction Command="{Binding MouseEnterGridCommand}"   
+                                       CommandParameter="{Binding ElementName=ctrlVideo}"/>
+            </i:EventTrigger>
+
+            <i:EventTrigger EventName="MouseLeave">
+                <i:InvokeCommandAction Command="{Binding MouseLeaveGridCommand}"   
+                                       CommandParameter="{Binding ElementName=ctrlVideo}"/>
+            </i:EventTrigger>
+
+            <i:EventTrigger EventName="MouseDown">
+                <i:InvokeCommandAction Command="{Binding MouseDownGridCommand}"   
+                                       CommandParameter="{Binding ElementName=ctrlVideo}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+
+        <MediaElement Canvas.Left="20"
+                          Name="VideoControl"
+                      Stretch="Uniform"
+                          LoadedBehavior="Manual"
+                          UnloadedBehavior="Manual" 
+                      ScrubbingEnabled="True" />
+
+        <uc:ControlVideo x:Name="ctrlVideo" 
+                            Visibility="Hidden"/>
+
+
+
+    </Grid>
+</Window>
+

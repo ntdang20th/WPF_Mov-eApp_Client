@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="Semester6_MainProject.MVVM.View.PopupContentItemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Semester6_MainProject.MVVM.View"
+             mc:Ignorable="d"
+             Background="Transparent" Height="250" Width="306">
+    <Grid>
+        <Image Source="/Image/tooltip.png" 
+               Height="250"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Stretch="Uniform"/>
+
+        <StackPanel>
+
+            <Grid HorizontalAlignment="Left"
+                  Width="60"
+                  Height="50"
+                  Margin="15,0,0,0">
+                <materialDesign:PackIcon Kind="Star" 
+                                         Foreground="#fca311" 
+                                         Margin="2" 
+                                         VerticalAlignment="Center"
+                                         Height="25"
+                                         Width="25"/>
+                <TextBlock Text="9.5" 
+                           FontSize="20"
+                           HorizontalAlignment="Right" 
+                           VerticalAlignment="Center"/>
+            </Grid>
+
+            <TextBlock Text="Ten phim"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="Black"
+                       Margin="15,0,0,0"/>
+
+            <Grid Margin="20,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="So tap"
+                           FontSize="16"
+                           FontStyle="Italic"
+                           Foreground="Black"
+                           Grid.Column="0"/>
+
+                <TextBlock Text="Mua"
+                           FontSize="16"
+                           FontStyle="Italic"
+                           Foreground="Black"
+                           Grid.Column="1"/>
+
+                <TextBlock Text="Nam"
+                           FontSize="16"
+                           FontStyle="Italic"
+                           Foreground="Black"
+                           Grid.Column="2"/>
+            </Grid>
+
+            <TextBlock Text="Noi dung phim: Toi ke nguoi nghe chuyen tinh lan va diep mot chuyen tinh cay dang luc tuoi con tho lan van thuong mong mo nen viet thanh bai tho "
+                       FontSize="16"
+                       Margin="15,0,15,0"
+                       Height="60"
+                       TextWrapping="WrapWithOverflow"/>
+
+            <Grid Margin="30,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <materialDesign:PackIcon Kind="Account" 
+                                             Height="25"
+                                             Width="25"/>
+                    <TextBlock Text="Tac gia"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <materialDesign:PackIcon Kind="Account" 
+                                             Height="25"
+                                             Width="25"/>
+                    <TextBlock Text="Studio"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                    <materialDesign:PackIcon Kind="Account" 
+                                             Height="25"
+                                             Width="25"/>
+                    <TextBlock Text="Binh luan: "/>
+                </StackPanel>
+            </Grid>
+
+
+
+        </StackPanel>
+    </Grid>
+
+    <UserControl.Style>
+        <Style>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="00:00:0.5" From="0" To="1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <Trigger Property="FrameworkElement.Visibility" Value="Collapsed">
+                    <Setter Property="FrameworkElement.Opacity" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+</UserControl>

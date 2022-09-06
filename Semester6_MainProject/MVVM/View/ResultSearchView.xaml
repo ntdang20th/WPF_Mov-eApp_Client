@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="Semester6_MainProject.MVVM.View.ResultSearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Semester6_MainProject.MVVM.View"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:view="clr-namespace:Semester6_MainProject.MVVM.View"
+             xmlns:viewModel="clr-namespace:Semester6_MainProject.MVVM.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="590" d:DesignWidth="1040">
+
+
+    <UserControl.DataContext>
+        <viewModel:ResultSearchViewModel/>
+    </UserControl.DataContext>
+
+    <materialDesign:Transitioner SelectedIndex="0" AutoApplyTransitionOrigins="True">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="530"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" >
+                <TextBlock Text="KẾT QUẢ TÌM KIẾM" Grid.Column="0"
+                       Foreground="White"
+                       FontSize="28" Margin="10"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"/>
+
+            </Grid>
+
+            <Grid Margin="10" Grid.Row="1">
+                <ListView ItemsSource="{Binding ListPhim, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <view:ItemView/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListView>
+            </Grid>
+
+        </Grid>
+
+        <materialDesign:TransitionerSlide >
+            <materialDesign:TransitionerSlide.OpeningEffects>
+
+                <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:1"/>
+            </materialDesign:TransitionerSlide.OpeningEffects>
+
+            <view:ItemMainView/>
+        </materialDesign:TransitionerSlide>
+    </materialDesign:Transitioner>
+</UserControl>

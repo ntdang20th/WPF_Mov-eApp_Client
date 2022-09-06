@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f057754c5214ae1bb764aefc248a2bc" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.AnhDaiDien" Width="1.5" PointX="5.25" PointY="31.875" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.ChuDe" Width="1.5" PointX="0.75" PointY="13.5" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Cua_NguoiDung_Quyen" Width="1.5" PointX="8.25" PointY="6.25" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Cua_Phim_Luat" Width="1.5" PointX="8.25" PointY="10.25" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Cua_Phim_Studio" Width="1.5" PointX="5.25" PointY="10.25" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Cua_Phim_TacGia" Width="1.5" PointX="5.25" PointY="16.25" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Cua_Phim_TheLoai" Width="1.5" PointX="8.25" PointY="16.25" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Luat" Width="1.5" PointX="6" PointY="4.5" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Mua" Width="1.5" PointX="0.75" PointY="10.25" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.NguoiDung" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.NguoiDung_BinhLuan_Phim" Width="1.5" PointX="8.25" PointY="13" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.NguoiDung_DanhGia_Phim" Width="1.5" PointX="5.25" PointY="13.125" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.NguoiDung_Xem_Phim" Width="1.5" PointX="5.25" PointY="7.125" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Phim" Width="1.5" PointX="3" PointY="11.625" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Quyen" Width="1.5" PointX="6" PointY="1.5" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.Studio" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.TacGia" Width="1.5" PointX="3" PointY="18.125" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.TaiKhoan" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.TheLoai" Width="1.5" PointX="6" PointY="19.5" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.ThongTin_NguoiDung" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.TrangThai" Width="1.5" PointX="0.75" PointY="16.625" />
+        <EntityTypeShape EntityType="DEMO_APP_XEMPHIMModel.VIDEO" Width="1.5" PointX="5.25" PointY="34.375" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__AnhDaiDie__IdPhi__619B8048" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Phim__IdChuDe__33D4B598" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Nguoi__IdNgu__4F7CD00D" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Nguoi__IdQuy__5070F446" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdLua__398D8EEE" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__38996AB5" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__3C69FB99" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdStu__3D5E1FD2" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__440B1D61" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdTac__44FF419A" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__403A8C7D" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdThe__412EB0B6" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Phim__IdMua__34C8D9D1" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5441852A" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5812160E" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5BE2A6F2" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdTho__4CA06362" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__571DF1D5" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__5AEE82B9" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__534D60F1" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__Phim__IdTrangTha__35BCFE0A" />
+        <AssociationConnector Association="DEMO_APP_XEMPHIMModel.FK__VIDEO__tenFileVi__6477ECF3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

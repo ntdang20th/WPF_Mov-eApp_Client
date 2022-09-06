@@ -1,0 +1,57 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <!--<Style 
+           TargetType="{x:Type Button}"
+           x:Key="ItemTheme">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" 
+                                        BorderThickness="1"
+                                        Padding="4,2" 
+                                        BorderBrush="DarkBlue" 
+                                        CornerRadius="10" 
+                                        Background="Transparent">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Image     Width="138"
+                               Height="195"
+                               Source="/Image/attackontitan.jpg"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               RenderTransformOrigin="1,1" 
+                               Stretch="Uniform" 
+                               Margin="-16,-8,-16,-10"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="White"></Setter>
+            </Trigger>
+        </Style.Triggers>
+
+
+    </Style>-->
+
+
+
+
+</ResourceDictionary>

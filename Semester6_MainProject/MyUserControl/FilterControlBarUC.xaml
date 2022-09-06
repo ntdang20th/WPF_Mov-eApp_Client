@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Semester6_MainProject.MyUserControl.FilterControlBarUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Semester6_MainProject.MyUserControl"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" FontSize="15"
+             d:DesignHeight="60" d:DesignWidth="440">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.4*"/>
+            <ColumnDefinition Width="1.4*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox Grid.Column="0"
+                  materialDesign:HintAssist.Hint="Trạng thái"
+                  ItemsSource="{Binding ListTrangThai}"
+                  DisplayMemberPath="TenTrangThai"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                  SelectedItem="{Binding SelectedTrangThai, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
+
+        <ComboBox   Grid.Column="1"  
+                    materialDesign:HintAssist.Hint="Thể loại"
+                    Name="cbbTheLoai"
+                    VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                    ItemsSource="{Binding ListTheLoai}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Foreground="Black" 
+                              Content="{Binding TenTheLoai}"
+                              IsChecked="{Binding Check, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+
+        <ComboBox  Grid.Column="2"
+                          materialDesign:HintAssist.Hint="Mùa phát hành"
+                      ItemsSource="{Binding ListMua}"
+                      DisplayMemberPath="TenMua"
+                   VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                      SelectedItem="{Binding SelectedMua, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
+
+        <ComboBox  Grid.Column="3"
+                          materialDesign:HintAssist.Hint="Năm phát hành"
+                      ItemsSource="{Binding ListNam}"
+                      DisplayMemberPath="TenMua"
+                   VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                      SelectedItem="{Binding SelectedNam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
+
+    </Grid>
+</UserControl>

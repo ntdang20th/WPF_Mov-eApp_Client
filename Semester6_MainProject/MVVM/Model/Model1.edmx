@@ -1,0 +1,1426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DEMO_APP_XEMPHIMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnhDaiDien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPhim" Type="int" />
+          <Property Name="tenFileAnh" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ChuDe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenChuDe" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Cua_NguoiDung_Quyen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNguoiDung" Type="int" />
+          <Property Name="IdQuyen" Type="int" />
+        </EntityType>
+        <EntityType Name="Cua_Phim_Luat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPhim" Type="int" />
+          <Property Name="IdLuat" Type="int" />
+        </EntityType>
+        <EntityType Name="Cua_Phim_Studio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPhim" Type="int" />
+          <Property Name="IdStudio" Type="int" />
+        </EntityType>
+        <EntityType Name="Cua_Phim_TacGia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPhim" Type="int" />
+          <Property Name="IdTacGia" Type="int" />
+        </EntityType>
+        <EntityType Name="Cua_Phim_TheLoai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPhim" Type="int" />
+          <Property Name="IdTheLoai" Type="int" />
+        </EntityType>
+        <EntityType Name="Luat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLuat" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Mua">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenMua" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="NguoiDung">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDangNhap" Type="nvarchar" MaxLength="200" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="200" />
+          <Property Name="IdThongTin" Type="int" />
+        </EntityType>
+        <EntityType Name="NguoiDung_BinhLuan_Phim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NgayBinhLuan" Type="datetime" />
+          <Property Name="IdNguoiDung" Type="int" />
+          <Property Name="IdPhim" Type="int" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NguoiDung_DanhGia_Phim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNguoiDung" Type="int" />
+          <Property Name="IdPhim" Type="int" />
+          <Property Name="DiemSo" Type="float" />
+        </EntityType>
+        <EntityType Name="NguoiDung_Xem_Phim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NgayXem" Type="datetime" />
+          <Property Name="IdNguoiDung" Type="int" />
+          <Property Name="IdPhim" Type="int" />
+        </EntityType>
+        <EntityType Name="Phim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenPhim" Type="nvarchar" MaxLength="400" />
+          <Property Name="IdChuDe" Type="int" />
+          <Property Name="SoTap" Type="int" />
+          <Property Name="ThoiLuong" Type="int" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="NamPhatHanh" Type="int" />
+          <Property Name="IdMua" Type="int" />
+          <Property Name="IdTrangThai" Type="int" />
+          <Property Name="ChatLuong" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Quyen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuyen" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Studio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenStudio" Type="nvarchar" MaxLength="100" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TacGia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTacGia" Type="nvarchar" MaxLength="200" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="4" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="QuocTich" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenHienThi" Type="nvarchar" MaxLength="200" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="200" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="200" />
+          <Property Name="Quyen" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TheLoai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTheLoai" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ThongTin_NguoiDung">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ho_HoLot" Type="nvarchar" MaxLength="200" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TrangThai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTrangThai" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="VIDEO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPhim" Type="int" />
+          <Property Name="SoTap" Type="nvarchar" MaxLength="20" />
+          <Property Name="tenFileVideo" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__AnhDaiDie__IdPhi__619B8048">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="AnhDaiDien" Type="Self.AnhDaiDien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AnhDaiDien">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Nguoi__IdNgu__4F7CD00D">
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+          <End Role="Cua_NguoiDung_Quyen" Type="Self.Cua_NguoiDung_Quyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_NguoiDung_Quyen">
+              <PropertyRef Name="IdNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Nguoi__IdQuy__5070F446">
+          <End Role="Quyen" Type="Self.Quyen" Multiplicity="0..1" />
+          <End Role="Cua_NguoiDung_Quyen" Type="Self.Cua_NguoiDung_Quyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quyen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_NguoiDung_Quyen">
+              <PropertyRef Name="IdQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdLua__398D8EEE">
+          <End Role="Luat" Type="Self.Luat" Multiplicity="0..1" />
+          <End Role="Cua_Phim_Luat" Type="Self.Cua_Phim_Luat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Luat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_Luat">
+              <PropertyRef Name="IdLuat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdPhi__38996AB5">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="Cua_Phim_Luat" Type="Self.Cua_Phim_Luat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_Luat">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdPhi__3C69FB99">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="Cua_Phim_Studio" Type="Self.Cua_Phim_Studio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_Studio">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdPhi__403A8C7D">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="Cua_Phim_TheLoai" Type="Self.Cua_Phim_TheLoai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_TheLoai">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdPhi__440B1D61">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="Cua_Phim_TacGia" Type="Self.Cua_Phim_TacGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_TacGia">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdStu__3D5E1FD2">
+          <End Role="Studio" Type="Self.Studio" Multiplicity="0..1" />
+          <End Role="Cua_Phim_Studio" Type="Self.Cua_Phim_Studio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_Studio">
+              <PropertyRef Name="IdStudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdTac__44FF419A">
+          <End Role="TacGia" Type="Self.TacGia" Multiplicity="0..1" />
+          <End Role="Cua_Phim_TacGia" Type="Self.Cua_Phim_TacGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TacGia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_TacGia">
+              <PropertyRef Name="IdTacGia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdThe__412EB0B6">
+          <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
+          <End Role="Cua_Phim_TheLoai" Type="Self.Cua_Phim_TheLoai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoai">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_TheLoai">
+              <PropertyRef Name="IdTheLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdNgu__5441852A">
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+          <End Role="NguoiDung_Xem_Phim" Type="Self.NguoiDung_Xem_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_Xem_Phim">
+              <PropertyRef Name="IdNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdNgu__5812160E">
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+          <End Role="NguoiDung_BinhLuan_Phim" Type="Self.NguoiDung_BinhLuan_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_BinhLuan_Phim">
+              <PropertyRef Name="IdNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdNgu__5BE2A6F2">
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+          <End Role="NguoiDung_DanhGia_Phim" Type="Self.NguoiDung_DanhGia_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_DanhGia_Phim">
+              <PropertyRef Name="IdNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdPhi__534D60F1">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="NguoiDung_Xem_Phim" Type="Self.NguoiDung_Xem_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_Xem_Phim">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdPhi__571DF1D5">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="NguoiDung_BinhLuan_Phim" Type="Self.NguoiDung_BinhLuan_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_BinhLuan_Phim">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdPhi__5AEE82B9">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="NguoiDung_DanhGia_Phim" Type="Self.NguoiDung_DanhGia_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_DanhGia_Phim">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdTho__4CA06362">
+          <End Role="ThongTin_NguoiDung" Type="Self.ThongTin_NguoiDung" Multiplicity="0..1" />
+          <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThongTin_NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="IdThongTin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phim__IdChuDe__33D4B598">
+          <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="0..1" />
+          <End Role="Phim" Type="Self.Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Phim">
+              <PropertyRef Name="IdChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phim__IdMua__34C8D9D1">
+          <End Role="Mua" Type="Self.Mua" Multiplicity="0..1" />
+          <End Role="Phim" Type="Self.Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mua">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Phim">
+              <PropertyRef Name="IdMua" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phim__IdTrangTha__35BCFE0A">
+          <End Role="TrangThai" Type="Self.TrangThai" Multiplicity="0..1" />
+          <End Role="Phim" Type="Self.Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrangThai">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Phim">
+              <PropertyRef Name="IdTrangThai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VIDEO__tenFileVi__6477ECF3">
+          <End Role="Phim" Type="Self.Phim" Multiplicity="0..1" />
+          <End Role="VIDEO" Type="Self.VIDEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VIDEO">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DEMO_APP_XEMPHIMModelStoreContainer">
+          <EntitySet Name="AnhDaiDien" EntityType="Self.AnhDaiDien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChuDe" EntityType="Self.ChuDe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cua_NguoiDung_Quyen" EntityType="Self.Cua_NguoiDung_Quyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cua_Phim_Luat" EntityType="Self.Cua_Phim_Luat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cua_Phim_Studio" EntityType="Self.Cua_Phim_Studio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cua_Phim_TacGia" EntityType="Self.Cua_Phim_TacGia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cua_Phim_TheLoai" EntityType="Self.Cua_Phim_TheLoai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Luat" EntityType="Self.Luat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mua" EntityType="Self.Mua" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NguoiDung_BinhLuan_Phim" EntityType="Self.NguoiDung_BinhLuan_Phim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NguoiDung_DanhGia_Phim" EntityType="Self.NguoiDung_DanhGia_Phim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NguoiDung_Xem_Phim" EntityType="Self.NguoiDung_Xem_Phim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phim" EntityType="Self.Phim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quyen" EntityType="Self.Quyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Studio" EntityType="Self.Studio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TacGia" EntityType="Self.TacGia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThongTin_NguoiDung" EntityType="Self.ThongTin_NguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrangThai" EntityType="Self.TrangThai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VIDEO" EntityType="Self.VIDEO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AnhDaiDie__IdPhi__619B8048" Association="Self.FK__AnhDaiDie__IdPhi__619B8048">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="AnhDaiDien" EntitySet="AnhDaiDien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Nguoi__IdNgu__4F7CD00D" Association="Self.FK__Cua_Nguoi__IdNgu__4F7CD00D">
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
+            <End Role="Cua_NguoiDung_Quyen" EntitySet="Cua_NguoiDung_Quyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Nguoi__IdQuy__5070F446" Association="Self.FK__Cua_Nguoi__IdQuy__5070F446">
+            <End Role="Quyen" EntitySet="Quyen" />
+            <End Role="Cua_NguoiDung_Quyen" EntitySet="Cua_NguoiDung_Quyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdLua__398D8EEE" Association="Self.FK__Cua_Phim___IdLua__398D8EEE">
+            <End Role="Luat" EntitySet="Luat" />
+            <End Role="Cua_Phim_Luat" EntitySet="Cua_Phim_Luat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdPhi__38996AB5" Association="Self.FK__Cua_Phim___IdPhi__38996AB5">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="Cua_Phim_Luat" EntitySet="Cua_Phim_Luat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdPhi__3C69FB99" Association="Self.FK__Cua_Phim___IdPhi__3C69FB99">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="Cua_Phim_Studio" EntitySet="Cua_Phim_Studio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdPhi__403A8C7D" Association="Self.FK__Cua_Phim___IdPhi__403A8C7D">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="Cua_Phim_TheLoai" EntitySet="Cua_Phim_TheLoai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdPhi__440B1D61" Association="Self.FK__Cua_Phim___IdPhi__440B1D61">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="Cua_Phim_TacGia" EntitySet="Cua_Phim_TacGia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdStu__3D5E1FD2" Association="Self.FK__Cua_Phim___IdStu__3D5E1FD2">
+            <End Role="Studio" EntitySet="Studio" />
+            <End Role="Cua_Phim_Studio" EntitySet="Cua_Phim_Studio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdTac__44FF419A" Association="Self.FK__Cua_Phim___IdTac__44FF419A">
+            <End Role="TacGia" EntitySet="TacGia" />
+            <End Role="Cua_Phim_TacGia" EntitySet="Cua_Phim_TacGia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdThe__412EB0B6" Association="Self.FK__Cua_Phim___IdThe__412EB0B6">
+            <End Role="TheLoai" EntitySet="TheLoai" />
+            <End Role="Cua_Phim_TheLoai" EntitySet="Cua_Phim_TheLoai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdNgu__5441852A" Association="Self.FK__NguoiDung__IdNgu__5441852A">
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
+            <End Role="NguoiDung_Xem_Phim" EntitySet="NguoiDung_Xem_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdNgu__5812160E" Association="Self.FK__NguoiDung__IdNgu__5812160E">
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
+            <End Role="NguoiDung_BinhLuan_Phim" EntitySet="NguoiDung_BinhLuan_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdNgu__5BE2A6F2" Association="Self.FK__NguoiDung__IdNgu__5BE2A6F2">
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
+            <End Role="NguoiDung_DanhGia_Phim" EntitySet="NguoiDung_DanhGia_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdPhi__534D60F1" Association="Self.FK__NguoiDung__IdPhi__534D60F1">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="NguoiDung_Xem_Phim" EntitySet="NguoiDung_Xem_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdPhi__571DF1D5" Association="Self.FK__NguoiDung__IdPhi__571DF1D5">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="NguoiDung_BinhLuan_Phim" EntitySet="NguoiDung_BinhLuan_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdPhi__5AEE82B9" Association="Self.FK__NguoiDung__IdPhi__5AEE82B9">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="NguoiDung_DanhGia_Phim" EntitySet="NguoiDung_DanhGia_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdTho__4CA06362" Association="Self.FK__NguoiDung__IdTho__4CA06362">
+            <End Role="ThongTin_NguoiDung" EntitySet="ThongTin_NguoiDung" />
+            <End Role="NguoiDung" EntitySet="NguoiDung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phim__IdChuDe__33D4B598" Association="Self.FK__Phim__IdChuDe__33D4B598">
+            <End Role="ChuDe" EntitySet="ChuDe" />
+            <End Role="Phim" EntitySet="Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phim__IdMua__34C8D9D1" Association="Self.FK__Phim__IdMua__34C8D9D1">
+            <End Role="Mua" EntitySet="Mua" />
+            <End Role="Phim" EntitySet="Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phim__IdTrangTha__35BCFE0A" Association="Self.FK__Phim__IdTrangTha__35BCFE0A">
+            <End Role="TrangThai" EntitySet="TrangThai" />
+            <End Role="Phim" EntitySet="Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VIDEO__tenFileVi__6477ECF3" Association="Self.FK__VIDEO__tenFileVi__6477ECF3">
+            <End Role="Phim" EntitySet="Phim" />
+            <End Role="VIDEO" EntitySet="VIDEO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DEMO_APP_XEMPHIMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DEMO_APP_XEMPHIMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AnhDaiDiens" EntityType="DEMO_APP_XEMPHIMModel.AnhDaiDien" />
+          <EntitySet Name="ChuDes" EntityType="DEMO_APP_XEMPHIMModel.ChuDe" />
+          <EntitySet Name="Cua_NguoiDung_Quyen" EntityType="DEMO_APP_XEMPHIMModel.Cua_NguoiDung_Quyen" />
+          <EntitySet Name="Cua_Phim_Luat" EntityType="DEMO_APP_XEMPHIMModel.Cua_Phim_Luat" />
+          <EntitySet Name="Cua_Phim_Studio" EntityType="DEMO_APP_XEMPHIMModel.Cua_Phim_Studio" />
+          <EntitySet Name="Cua_Phim_TacGia" EntityType="DEMO_APP_XEMPHIMModel.Cua_Phim_TacGia" />
+          <EntitySet Name="Cua_Phim_TheLoai" EntityType="DEMO_APP_XEMPHIMModel.Cua_Phim_TheLoai" />
+          <EntitySet Name="Luats" EntityType="DEMO_APP_XEMPHIMModel.Luat" />
+          <EntitySet Name="Muas" EntityType="DEMO_APP_XEMPHIMModel.Mua" />
+          <EntitySet Name="NguoiDungs" EntityType="DEMO_APP_XEMPHIMModel.NguoiDung" />
+          <EntitySet Name="NguoiDung_BinhLuan_Phim" EntityType="DEMO_APP_XEMPHIMModel.NguoiDung_BinhLuan_Phim" />
+          <EntitySet Name="NguoiDung_DanhGia_Phim" EntityType="DEMO_APP_XEMPHIMModel.NguoiDung_DanhGia_Phim" />
+          <EntitySet Name="NguoiDung_Xem_Phim" EntityType="DEMO_APP_XEMPHIMModel.NguoiDung_Xem_Phim" />
+          <EntitySet Name="Phims" EntityType="DEMO_APP_XEMPHIMModel.Phim" />
+          <EntitySet Name="Quyens" EntityType="DEMO_APP_XEMPHIMModel.Quyen" />
+          <EntitySet Name="Studios" EntityType="DEMO_APP_XEMPHIMModel.Studio" />
+          <EntitySet Name="TacGias" EntityType="DEMO_APP_XEMPHIMModel.TacGia" />
+          <EntitySet Name="TaiKhoans" EntityType="DEMO_APP_XEMPHIMModel.TaiKhoan" />
+          <EntitySet Name="TheLoais" EntityType="DEMO_APP_XEMPHIMModel.TheLoai" />
+          <EntitySet Name="ThongTin_NguoiDung" EntityType="DEMO_APP_XEMPHIMModel.ThongTin_NguoiDung" />
+          <EntitySet Name="TrangThais" EntityType="DEMO_APP_XEMPHIMModel.TrangThai" />
+          <EntitySet Name="VIDEOs" EntityType="DEMO_APP_XEMPHIMModel.VIDEO" />
+          <AssociationSet Name="FK__AnhDaiDie__IdPhi__619B8048" Association="DEMO_APP_XEMPHIMModel.FK__AnhDaiDie__IdPhi__619B8048">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="AnhDaiDien" EntitySet="AnhDaiDiens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phim__IdChuDe__33D4B598" Association="DEMO_APP_XEMPHIMModel.FK__Phim__IdChuDe__33D4B598">
+            <End Role="ChuDe" EntitySet="ChuDes" />
+            <End Role="Phim" EntitySet="Phims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Nguoi__IdNgu__4F7CD00D" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Nguoi__IdNgu__4F7CD00D">
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+            <End Role="Cua_NguoiDung_Quyen" EntitySet="Cua_NguoiDung_Quyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Nguoi__IdQuy__5070F446" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Nguoi__IdQuy__5070F446">
+            <End Role="Quyen" EntitySet="Quyens" />
+            <End Role="Cua_NguoiDung_Quyen" EntitySet="Cua_NguoiDung_Quyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdLua__398D8EEE" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdLua__398D8EEE">
+            <End Role="Luat" EntitySet="Luats" />
+            <End Role="Cua_Phim_Luat" EntitySet="Cua_Phim_Luat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdPhi__38996AB5" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__38996AB5">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="Cua_Phim_Luat" EntitySet="Cua_Phim_Luat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdPhi__3C69FB99" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__3C69FB99">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="Cua_Phim_Studio" EntitySet="Cua_Phim_Studio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdStu__3D5E1FD2" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdStu__3D5E1FD2">
+            <End Role="Studio" EntitySet="Studios" />
+            <End Role="Cua_Phim_Studio" EntitySet="Cua_Phim_Studio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdPhi__440B1D61" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__440B1D61">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="Cua_Phim_TacGia" EntitySet="Cua_Phim_TacGia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdTac__44FF419A" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdTac__44FF419A">
+            <End Role="TacGia" EntitySet="TacGias" />
+            <End Role="Cua_Phim_TacGia" EntitySet="Cua_Phim_TacGia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdPhi__403A8C7D" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__403A8C7D">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="Cua_Phim_TheLoai" EntitySet="Cua_Phim_TheLoai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cua_Phim___IdThe__412EB0B6" Association="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdThe__412EB0B6">
+            <End Role="TheLoai" EntitySet="TheLoais" />
+            <End Role="Cua_Phim_TheLoai" EntitySet="Cua_Phim_TheLoai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phim__IdMua__34C8D9D1" Association="DEMO_APP_XEMPHIMModel.FK__Phim__IdMua__34C8D9D1">
+            <End Role="Mua" EntitySet="Muas" />
+            <End Role="Phim" EntitySet="Phims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdNgu__5441852A" Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5441852A">
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+            <End Role="NguoiDung_Xem_Phim" EntitySet="NguoiDung_Xem_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdNgu__5812160E" Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5812160E">
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+            <End Role="NguoiDung_BinhLuan_Phim" EntitySet="NguoiDung_BinhLuan_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdNgu__5BE2A6F2" Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5BE2A6F2">
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+            <End Role="NguoiDung_DanhGia_Phim" EntitySet="NguoiDung_DanhGia_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdTho__4CA06362" Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdTho__4CA06362">
+            <End Role="ThongTin_NguoiDung" EntitySet="ThongTin_NguoiDung" />
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdPhi__571DF1D5" Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__571DF1D5">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="NguoiDung_BinhLuan_Phim" EntitySet="NguoiDung_BinhLuan_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdPhi__5AEE82B9" Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__5AEE82B9">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="NguoiDung_DanhGia_Phim" EntitySet="NguoiDung_DanhGia_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NguoiDung__IdPhi__534D60F1" Association="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__534D60F1">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="NguoiDung_Xem_Phim" EntitySet="NguoiDung_Xem_Phim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phim__IdTrangTha__35BCFE0A" Association="DEMO_APP_XEMPHIMModel.FK__Phim__IdTrangTha__35BCFE0A">
+            <End Role="TrangThai" EntitySet="TrangThais" />
+            <End Role="Phim" EntitySet="Phims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VIDEO__tenFileVi__6477ECF3" Association="DEMO_APP_XEMPHIMModel.FK__VIDEO__tenFileVi__6477ECF3">
+            <End Role="Phim" EntitySet="Phims" />
+            <End Role="VIDEO" EntitySet="VIDEOs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AnhDaiDien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPhim" Type="Int32" />
+          <Property Name="tenFileAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__AnhDaiDie__IdPhi__619B8048" FromRole="AnhDaiDien" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="ChuDe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenChuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Phims" Relationship="DEMO_APP_XEMPHIMModel.FK__Phim__IdChuDe__33D4B598" FromRole="ChuDe" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="Cua_NguoiDung_Quyen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNguoiDung" Type="Int32" />
+          <Property Name="IdQuyen" Type="Int32" />
+          <NavigationProperty Name="NguoiDung" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Nguoi__IdNgu__4F7CD00D" FromRole="Cua_NguoiDung_Quyen" ToRole="NguoiDung" />
+          <NavigationProperty Name="Quyen" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Nguoi__IdQuy__5070F446" FromRole="Cua_NguoiDung_Quyen" ToRole="Quyen" />
+        </EntityType>
+        <EntityType Name="Cua_Phim_Luat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPhim" Type="Int32" />
+          <Property Name="IdLuat" Type="Int32" />
+          <NavigationProperty Name="Luat" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdLua__398D8EEE" FromRole="Cua_Phim_Luat" ToRole="Luat" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__38996AB5" FromRole="Cua_Phim_Luat" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="Cua_Phim_Studio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPhim" Type="Int32" />
+          <Property Name="IdStudio" Type="Int32" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__3C69FB99" FromRole="Cua_Phim_Studio" ToRole="Phim" />
+          <NavigationProperty Name="Studio" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdStu__3D5E1FD2" FromRole="Cua_Phim_Studio" ToRole="Studio" />
+        </EntityType>
+        <EntityType Name="Cua_Phim_TacGia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPhim" Type="Int32" />
+          <Property Name="IdTacGia" Type="Int32" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__440B1D61" FromRole="Cua_Phim_TacGia" ToRole="Phim" />
+          <NavigationProperty Name="TacGia" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdTac__44FF419A" FromRole="Cua_Phim_TacGia" ToRole="TacGia" />
+        </EntityType>
+        <EntityType Name="Cua_Phim_TheLoai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPhim" Type="Int32" />
+          <Property Name="IdTheLoai" Type="Int32" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__403A8C7D" FromRole="Cua_Phim_TheLoai" ToRole="Phim" />
+          <NavigationProperty Name="TheLoai" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdThe__412EB0B6" FromRole="Cua_Phim_TheLoai" ToRole="TheLoai" />
+        </EntityType>
+        <EntityType Name="Luat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLuat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cua_Phim_Luat" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdLua__398D8EEE" FromRole="Luat" ToRole="Cua_Phim_Luat" />
+        </EntityType>
+        <EntityType Name="Mua">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenMua" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Phims" Relationship="DEMO_APP_XEMPHIMModel.FK__Phim__IdMua__34C8D9D1" FromRole="Mua" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="NguoiDung">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IdThongTin" Type="Int32" />
+          <NavigationProperty Name="Cua_NguoiDung_Quyen" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Nguoi__IdNgu__4F7CD00D" FromRole="NguoiDung" ToRole="Cua_NguoiDung_Quyen" />
+          <NavigationProperty Name="NguoiDung_Xem_Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5441852A" FromRole="NguoiDung" ToRole="NguoiDung_Xem_Phim" />
+          <NavigationProperty Name="NguoiDung_BinhLuan_Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5812160E" FromRole="NguoiDung" ToRole="NguoiDung_BinhLuan_Phim" />
+          <NavigationProperty Name="NguoiDung_DanhGia_Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5BE2A6F2" FromRole="NguoiDung" ToRole="NguoiDung_DanhGia_Phim" />
+          <NavigationProperty Name="ThongTin_NguoiDung" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdTho__4CA06362" FromRole="NguoiDung" ToRole="ThongTin_NguoiDung" />
+        </EntityType>
+        <EntityType Name="NguoiDung_BinhLuan_Phim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayBinhLuan" Type="DateTime" Precision="3" />
+          <Property Name="IdNguoiDung" Type="Int32" />
+          <Property Name="IdPhim" Type="Int32" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NguoiDung" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5812160E" FromRole="NguoiDung_BinhLuan_Phim" ToRole="NguoiDung" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__571DF1D5" FromRole="NguoiDung_BinhLuan_Phim" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="NguoiDung_DanhGia_Phim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNguoiDung" Type="Int32" />
+          <Property Name="IdPhim" Type="Int32" />
+          <Property Name="DiemSo" Type="Double" />
+          <NavigationProperty Name="NguoiDung" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5BE2A6F2" FromRole="NguoiDung_DanhGia_Phim" ToRole="NguoiDung" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__5AEE82B9" FromRole="NguoiDung_DanhGia_Phim" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="NguoiDung_Xem_Phim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayXem" Type="DateTime" Precision="3" />
+          <Property Name="IdNguoiDung" Type="Int32" />
+          <Property Name="IdPhim" Type="Int32" />
+          <NavigationProperty Name="NguoiDung" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdNgu__5441852A" FromRole="NguoiDung_Xem_Phim" ToRole="NguoiDung" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__534D60F1" FromRole="NguoiDung_Xem_Phim" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="Phim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenPhim" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="IdChuDe" Type="Int32" />
+          <Property Name="SoTap" Type="Int32" />
+          <Property Name="ThoiLuong" Type="Int32" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NamPhatHanh" Type="Int32" />
+          <Property Name="IdMua" Type="Int32" />
+          <Property Name="IdTrangThai" Type="Int32" />
+          <Property Name="ChatLuong" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AnhDaiDiens" Relationship="DEMO_APP_XEMPHIMModel.FK__AnhDaiDie__IdPhi__619B8048" FromRole="Phim" ToRole="AnhDaiDien" />
+          <NavigationProperty Name="ChuDe" Relationship="DEMO_APP_XEMPHIMModel.FK__Phim__IdChuDe__33D4B598" FromRole="Phim" ToRole="ChuDe" />
+          <NavigationProperty Name="Cua_Phim_Luat" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__38996AB5" FromRole="Phim" ToRole="Cua_Phim_Luat" />
+          <NavigationProperty Name="Cua_Phim_Studio" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__3C69FB99" FromRole="Phim" ToRole="Cua_Phim_Studio" />
+          <NavigationProperty Name="Cua_Phim_TacGia" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__440B1D61" FromRole="Phim" ToRole="Cua_Phim_TacGia" />
+          <NavigationProperty Name="Cua_Phim_TheLoai" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdPhi__403A8C7D" FromRole="Phim" ToRole="Cua_Phim_TheLoai" />
+          <NavigationProperty Name="Mua" Relationship="DEMO_APP_XEMPHIMModel.FK__Phim__IdMua__34C8D9D1" FromRole="Phim" ToRole="Mua" />
+          <NavigationProperty Name="NguoiDung_BinhLuan_Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__571DF1D5" FromRole="Phim" ToRole="NguoiDung_BinhLuan_Phim" />
+          <NavigationProperty Name="NguoiDung_DanhGia_Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__5AEE82B9" FromRole="Phim" ToRole="NguoiDung_DanhGia_Phim" />
+          <NavigationProperty Name="NguoiDung_Xem_Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdPhi__534D60F1" FromRole="Phim" ToRole="NguoiDung_Xem_Phim" />
+          <NavigationProperty Name="TrangThai" Relationship="DEMO_APP_XEMPHIMModel.FK__Phim__IdTrangTha__35BCFE0A" FromRole="Phim" ToRole="TrangThai" />
+          <NavigationProperty Name="VIDEOs" Relationship="DEMO_APP_XEMPHIMModel.FK__VIDEO__tenFileVi__6477ECF3" FromRole="Phim" ToRole="VIDEO" />
+        </EntityType>
+        <EntityType Name="Quyen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuyen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cua_NguoiDung_Quyen" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Nguoi__IdQuy__5070F446" FromRole="Quyen" ToRole="Cua_NguoiDung_Quyen" />
+        </EntityType>
+        <EntityType Name="Studio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenStudio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cua_Phim_Studio" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdStu__3D5E1FD2" FromRole="Studio" ToRole="Cua_Phim_Studio" />
+        </EntityType>
+        <EntityType Name="TacGia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTacGia" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="QuocTich" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cua_Phim_TacGia" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdTac__44FF419A" FromRole="TacGia" ToRole="Cua_Phim_TacGia" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenHienThi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Quyen" Type="Byte" />
+        </EntityType>
+        <EntityType Name="TheLoai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTheLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cua_Phim_TheLoai" Relationship="DEMO_APP_XEMPHIMModel.FK__Cua_Phim___IdThe__412EB0B6" FromRole="TheLoai" ToRole="Cua_Phim_TheLoai" />
+        </EntityType>
+        <EntityType Name="ThongTin_NguoiDung">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ho_HoLot" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NguoiDungs" Relationship="DEMO_APP_XEMPHIMModel.FK__NguoiDung__IdTho__4CA06362" FromRole="ThongTin_NguoiDung" ToRole="NguoiDung" />
+        </EntityType>
+        <EntityType Name="TrangThai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTrangThai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Phims" Relationship="DEMO_APP_XEMPHIMModel.FK__Phim__IdTrangTha__35BCFE0A" FromRole="TrangThai" ToRole="Phim" />
+        </EntityType>
+        <EntityType Name="VIDEO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPhim" Type="Int32" />
+          <Property Name="SoTap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="tenFileVideo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Phim" Relationship="DEMO_APP_XEMPHIMModel.FK__VIDEO__tenFileVi__6477ECF3" FromRole="VIDEO" ToRole="Phim" />
+        </EntityType>
+        <Association Name="FK__AnhDaiDie__IdPhi__619B8048">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.AnhDaiDien" Role="AnhDaiDien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AnhDaiDien">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phim__IdChuDe__33D4B598">
+          <End Type="DEMO_APP_XEMPHIMModel.ChuDe" Role="ChuDe" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuDe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Phim">
+              <PropertyRef Name="IdChuDe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Nguoi__IdNgu__4F7CD00D">
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_NguoiDung_Quyen" Role="Cua_NguoiDung_Quyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_NguoiDung_Quyen">
+              <PropertyRef Name="IdNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Nguoi__IdQuy__5070F446">
+          <End Type="DEMO_APP_XEMPHIMModel.Quyen" Role="Quyen" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_NguoiDung_Quyen" Role="Cua_NguoiDung_Quyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quyen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_NguoiDung_Quyen">
+              <PropertyRef Name="IdQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdLua__398D8EEE">
+          <End Type="DEMO_APP_XEMPHIMModel.Luat" Role="Luat" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_Phim_Luat" Role="Cua_Phim_Luat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Luat">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_Luat">
+              <PropertyRef Name="IdLuat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdPhi__38996AB5">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_Phim_Luat" Role="Cua_Phim_Luat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_Luat">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdPhi__3C69FB99">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_Phim_Studio" Role="Cua_Phim_Studio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_Studio">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdStu__3D5E1FD2">
+          <End Type="DEMO_APP_XEMPHIMModel.Studio" Role="Studio" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_Phim_Studio" Role="Cua_Phim_Studio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_Studio">
+              <PropertyRef Name="IdStudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdPhi__440B1D61">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_Phim_TacGia" Role="Cua_Phim_TacGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_TacGia">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdTac__44FF419A">
+          <End Type="DEMO_APP_XEMPHIMModel.TacGia" Role="TacGia" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_Phim_TacGia" Role="Cua_Phim_TacGia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TacGia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_TacGia">
+              <PropertyRef Name="IdTacGia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdPhi__403A8C7D">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_Phim_TheLoai" Role="Cua_Phim_TheLoai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_TheLoai">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cua_Phim___IdThe__412EB0B6">
+          <End Type="DEMO_APP_XEMPHIMModel.TheLoai" Role="TheLoai" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Cua_Phim_TheLoai" Role="Cua_Phim_TheLoai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheLoai">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cua_Phim_TheLoai">
+              <PropertyRef Name="IdTheLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phim__IdMua__34C8D9D1">
+          <End Type="DEMO_APP_XEMPHIMModel.Mua" Role="Mua" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mua">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Phim">
+              <PropertyRef Name="IdMua" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdNgu__5441852A">
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung_Xem_Phim" Role="NguoiDung_Xem_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_Xem_Phim">
+              <PropertyRef Name="IdNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdNgu__5812160E">
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung_BinhLuan_Phim" Role="NguoiDung_BinhLuan_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_BinhLuan_Phim">
+              <PropertyRef Name="IdNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdNgu__5BE2A6F2">
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung_DanhGia_Phim" Role="NguoiDung_DanhGia_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_DanhGia_Phim">
+              <PropertyRef Name="IdNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdTho__4CA06362">
+          <End Type="DEMO_APP_XEMPHIMModel.ThongTin_NguoiDung" Role="ThongTin_NguoiDung" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung" Role="NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThongTin_NguoiDung">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="IdThongTin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdPhi__571DF1D5">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung_BinhLuan_Phim" Role="NguoiDung_BinhLuan_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_BinhLuan_Phim">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdPhi__5AEE82B9">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung_DanhGia_Phim" Role="NguoiDung_DanhGia_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_DanhGia_Phim">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NguoiDung__IdPhi__534D60F1">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.NguoiDung_Xem_Phim" Role="NguoiDung_Xem_Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung_Xem_Phim">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phim__IdTrangTha__35BCFE0A">
+          <End Type="DEMO_APP_XEMPHIMModel.TrangThai" Role="TrangThai" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrangThai">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Phim">
+              <PropertyRef Name="IdTrangThai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VIDEO__tenFileVi__6477ECF3">
+          <End Type="DEMO_APP_XEMPHIMModel.Phim" Role="Phim" Multiplicity="0..1" />
+          <End Type="DEMO_APP_XEMPHIMModel.VIDEO" Role="VIDEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phim">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VIDEO">
+              <PropertyRef Name="IdPhim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DEMO_APP_XEMPHIMModelStoreContainer" CdmEntityContainer="DEMO_APP_XEMPHIMEntities">
+          <EntitySetMapping Name="AnhDaiDiens">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.AnhDaiDien">
+              <MappingFragment StoreEntitySet="AnhDaiDien">
+                <ScalarProperty Name="tenFileAnh" ColumnName="tenFileAnh" />
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChuDes">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.ChuDe">
+              <MappingFragment StoreEntitySet="ChuDe">
+                <ScalarProperty Name="TenChuDe" ColumnName="TenChuDe" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cua_NguoiDung_Quyen">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Cua_NguoiDung_Quyen">
+              <MappingFragment StoreEntitySet="Cua_NguoiDung_Quyen">
+                <ScalarProperty Name="IdQuyen" ColumnName="IdQuyen" />
+                <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cua_Phim_Luat">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Cua_Phim_Luat">
+              <MappingFragment StoreEntitySet="Cua_Phim_Luat">
+                <ScalarProperty Name="IdLuat" ColumnName="IdLuat" />
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cua_Phim_Studio">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Cua_Phim_Studio">
+              <MappingFragment StoreEntitySet="Cua_Phim_Studio">
+                <ScalarProperty Name="IdStudio" ColumnName="IdStudio" />
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cua_Phim_TacGia">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Cua_Phim_TacGia">
+              <MappingFragment StoreEntitySet="Cua_Phim_TacGia">
+                <ScalarProperty Name="IdTacGia" ColumnName="IdTacGia" />
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cua_Phim_TheLoai">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Cua_Phim_TheLoai">
+              <MappingFragment StoreEntitySet="Cua_Phim_TheLoai">
+                <ScalarProperty Name="IdTheLoai" ColumnName="IdTheLoai" />
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Luats">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Luat">
+              <MappingFragment StoreEntitySet="Luat">
+                <ScalarProperty Name="TenLuat" ColumnName="TenLuat" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Muas">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Mua">
+              <MappingFragment StoreEntitySet="Mua">
+                <ScalarProperty Name="TenMua" ColumnName="TenMua" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NguoiDungs">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.NguoiDung">
+              <MappingFragment StoreEntitySet="NguoiDung">
+                <ScalarProperty Name="IdThongTin" ColumnName="IdThongTin" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NguoiDung_BinhLuan_Phim">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.NguoiDung_BinhLuan_Phim">
+              <MappingFragment StoreEntitySet="NguoiDung_BinhLuan_Phim">
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
+                <ScalarProperty Name="NgayBinhLuan" ColumnName="NgayBinhLuan" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NguoiDung_DanhGia_Phim">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.NguoiDung_DanhGia_Phim">
+              <MappingFragment StoreEntitySet="NguoiDung_DanhGia_Phim">
+                <ScalarProperty Name="DiemSo" ColumnName="DiemSo" />
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NguoiDung_Xem_Phim">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.NguoiDung_Xem_Phim">
+              <MappingFragment StoreEntitySet="NguoiDung_Xem_Phim">
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
+                <ScalarProperty Name="NgayXem" ColumnName="NgayXem" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phims">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Phim">
+              <MappingFragment StoreEntitySet="Phim">
+                <ScalarProperty Name="ChatLuong" ColumnName="ChatLuong" />
+                <ScalarProperty Name="IdTrangThai" ColumnName="IdTrangThai" />
+                <ScalarProperty Name="IdMua" ColumnName="IdMua" />
+                <ScalarProperty Name="NamPhatHanh" ColumnName="NamPhatHanh" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="ThoiLuong" ColumnName="ThoiLuong" />
+                <ScalarProperty Name="SoTap" ColumnName="SoTap" />
+                <ScalarProperty Name="IdChuDe" ColumnName="IdChuDe" />
+                <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quyens">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Quyen">
+              <MappingFragment StoreEntitySet="Quyen">
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Studios">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.Studio">
+              <MappingFragment StoreEntitySet="Studio">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TenStudio" ColumnName="TenStudio" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TacGias">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.TacGia">
+              <MappingFragment StoreEntitySet="TacGia">
+                <ScalarProperty Name="QuocTich" ColumnName="QuocTich" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="TenTacGia" ColumnName="TenTacGia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="Quyen" ColumnName="Quyen" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="TenHienThi" ColumnName="TenHienThi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheLoais">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.TheLoai">
+              <MappingFragment StoreEntitySet="TheLoai">
+                <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThongTin_NguoiDung">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.ThongTin_NguoiDung">
+              <MappingFragment StoreEntitySet="ThongTin_NguoiDung">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Ho_HoLot" ColumnName="Ho_HoLot" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrangThais">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.TrangThai">
+              <MappingFragment StoreEntitySet="TrangThai">
+                <ScalarProperty Name="TenTrangThai" ColumnName="TenTrangThai" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIDEOs">
+            <EntityTypeMapping TypeName="DEMO_APP_XEMPHIMModel.VIDEO">
+              <MappingFragment StoreEntitySet="VIDEO">
+                <ScalarProperty Name="tenFileVideo" ColumnName="tenFileVideo" />
+                <ScalarProperty Name="SoTap" ColumnName="SoTap" />
+                <ScalarProperty Name="IdPhim" ColumnName="IdPhim" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

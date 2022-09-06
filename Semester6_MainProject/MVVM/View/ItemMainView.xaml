@@ -1,0 +1,581 @@
+﻿<UserControl x:Class="Semester6_MainProject.MVVM.View.ItemMainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Semester6_MainProject.MVVM.View"
+             xmlns:uc="clr-namespace:Semester6_MainProject.MyUserControl"
+             xmlns:view="clr-namespace:Semester6_MainProject.MVVM.View"
+             mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:viewModel="clr-namespace:Semester6_MainProject.MVVM.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="570" d:DesignWidth="1240"
+             Foreground="White">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Value="True">
+                    <Setter Property="Foreground" Value="Red"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="BigText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="SmallText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="{x:Type ListViewItem}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Grid.Row="0">
+        <Button 
+                Width="30"
+                Height="30"
+                Panel.ZIndex="99"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0 10 10 0">
+            <materialDesign:PackIcon Kind="Home"
+                                         Width="30"
+                                         Height="30"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center"/>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"/>
+                    <i:InvokeCommandAction Command="{Binding Exit}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        
+        <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+                    TabStripPlacement="Top"
+                    FontSize="15"
+                    Margin="5" 
+                    Background="Transparent" Foreground="White">
+            <TabItem Width="auto" Height="45">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="10"
+                        Height="auto"
+                                Width="auto">
+                        <materialDesign:PackIcon
+                              Kind="Information"
+                              Width="30"
+                              Height="30"
+                              HorizontalAlignment="Center" />
+                        <TextBlock Text="Thông tin"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"
+                                   FontSize="18" FontWeight="Bold"
+                                   HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!-- Your tab content -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="350"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--copnten phim-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="240"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <!--Anh-->
+                            <Border>
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding SelectedItem.Anh}"/>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="{Binding SelectedItem.TenPhim}" Style="{StaticResource BigText}"/>
+
+                            <Grid Grid.Row="1">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Style="{StaticResource SmallText}">
+                                    <Run Text="Đánh giá: "/>
+                                    <Run Text="{Binding SelectedItem.DiemSo}"/>
+                                    <Run Text="/"/>
+                                    <Run Text="{Binding SelectedItem.NguoiDung_DanhGia_Phim.Count, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </TextBlock>
+
+                                <TextBlock Grid.Column="1" Style="{StaticResource SmallText}">
+                        <Run Text="Lượt xem: "/>
+                        <Run Text="{Binding SelectedItem.LuotXem}"/>
+                                </TextBlock>
+
+                                <TextBlock Grid.Column="2" Style="{StaticResource SmallText}">
+                        <Run Text="Bình luận: "/>
+                        <Run Text="{Binding SelectedItem.LuotBinhLuan}"/>
+                                </TextBlock>
+                            </Grid>
+
+
+                            <!--cac thuoc tinh phim-->
+                            <Grid Grid.Row="3" Margin="0 10 0 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!--Cac thuoc tinh-->
+                                <ScrollViewer Height="auto" VerticalScrollBarVisibility="Auto">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.2*"/>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Grid.Column="0"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text="Trạng thái: "/>
+                            <Run Text="{Binding SelectedItem.TrangThai.TenTrangThai}"/>
+
+                                        </TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="0"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text="Chủ đề: "/>
+                            <Run Text="{Binding SelectedItem.ChuDe.TenChuDe}"/>
+                                        </TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="0"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text="Chất lượng: "/>
+                            <Run Text="{Binding SelectedItem.ChatLuong}"/>
+                                        </TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" 
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text="Thể loại: "/>
+                            <Run Text="{Binding SelectedItem.toStringTheLoai}"/>
+                                        </TextBlock>
+
+                                        <TextBlock Grid.Row="0" Grid.Column="1"
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text="Tác giả: "/>
+                            <Run Text="{Binding SelectedItem.toStringTacGia}"/>
+                                        </TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="1"
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text ="Studio: "/>
+                            <Run Text="{Binding SelectedItem.toStringStudio}"/>
+                                        </TextBlock>
+
+
+                                        <TextBlock Grid.Row="0" Grid.Column="2"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text="Mùa: "/>
+                            <Run Text="{Binding SelectedItem.Mua.TenMua}"/>
+                                        </TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="2"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text ="Năm: "/>
+                            <Run Text="{Binding SelectedItem.NamPhatHanh}"/>
+                                        </TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="2"
+                                   Style="{StaticResource SmallText}">
+                            <Run Text="Thời lượng: "/>
+                            <Run Text="{Binding SelectedItem.ThoiLuong}"/>
+                                        </TextBlock>
+
+                                    </Grid>
+                                </ScrollViewer>
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <!--tap phim-->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <TextBlock Style="{StaticResource SmallText}"
+                                           Text="{Binding SelectedItem.NoiDung}"
+                                           Margin="10"/>
+                    </ScrollViewer>
+                </Grid>
+
+            </TabItem>
+            <TabItem Width="auto" Height="45" 
+                     IsEnabled="{Binding canWatch, UpdateSourceTrigger=PropertyChanged}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="10"
+                        Height="auto"
+                                Width="auto">
+                        <materialDesign:PackIcon
+                              Kind="PlayCircle"
+                              Width="30"
+                              Height="30"
+                              HorizontalAlignment="Center" />
+                        <TextBlock Text="Xem phim"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"
+                                   FontSize="18" FontWeight="Bold"
+                                   HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!-- Your tab content -->
+                <Grid>
+                    <Grid>
+                        <ListView ItemsSource="{Binding SelectedVisibleVideos}" Padding="0" Margin="5"
+                                  SelectedItem="{Binding SelectedTapPhim, Mode=OneWayToSource}"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto" SelectedIndex="-1">
+
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            
+                            <ListView.ItemTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Height="20" Width="50"
+                                                FontSize="16" Foreground="LightGray"
+                                                FontWeight="Bold"
+                                                Text="{Binding SoTap}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{x:Static viewModel:MainViewModel.XemCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Width="auto" Height="45" 
+                     IsEnabled="{Binding canWatch, UpdateSourceTrigger=PropertyChanged}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="10"
+                        Height="auto"
+                                Width="auto">
+                        <materialDesign:PackIcon
+                              Kind="StarCircle"
+                              Width="30"
+                              Height="30"
+                              HorizontalAlignment="Center" />
+                        <TextBlock Text="Đánh giá"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"
+                                   FontSize="18" FontWeight="Bold"
+                                   HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!-- Your tab content -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="350"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--copnten phim-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="240"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <!--Anh-->
+                            <Border>
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding SelectedItem.Anh}"/>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="{Binding SelectedItem.TenPhim}" Style="{StaticResource BigText}"/>
+
+                            <Grid Grid.Row="1">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Style="{StaticResource SmallText}">
+                                    <Run Text="Đánh giá: "/>
+                                    <Run Text="{Binding SelectedItem.DiemSo}"/>
+                                    <Run Text="/"/>
+                                    <Run Text="{Binding SelectedItem.LuotDanhGia}"/>
+                                </TextBlock>
+
+                                <TextBlock Grid.Column="1" Style="{StaticResource SmallText}">
+                        <Run Text="Lượt xem: "/>
+                        <Run Text="{Binding SelectedItem.LuotXem}"/>
+                                </TextBlock>
+
+                                <TextBlock Grid.Column="2" Style="{StaticResource SmallText}">
+                        <Run Text="Bình luận: "/>
+                        <Run Text="{Binding SelectedItem.LuotBinhLuan}"/>
+                                </TextBlock>
+                            </Grid>
+
+
+                            <!--cac thuoc tinh phim-->
+                            <Grid Grid.Row="3" Margin="0 10 0 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!--danh gia-->
+                                <StackPanel>
+                                    <materialDesign:RatingBar Name="ratingbar"
+                                                          VerticalAlignment="Center"
+                                                          HorizontalAlignment="Left"
+                                                              Height="30"
+                                                          Max="10" Width="400"
+                                                          Foreground="Yellow" >
+                                        <materialDesign:RatingBar.LayoutTransform>
+                                            <ScaleTransform ScaleX="2" ScaleY="2"/>
+                                        </materialDesign:RatingBar.LayoutTransform>
+                                    </materialDesign:RatingBar>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                                materialDesign:ButtonAssist.CornerRadius="20"
+                                                Width="150"
+                                                Height="40"
+                                                Content="Đánh giá"
+                                                Background="Orange"
+                                                BorderThickness="0"
+                                                Command="{x:Static viewModel:MainViewModel.DanhGiaCommand}"
+                                                CommandParameter="{Binding ElementName=ratingbar}">
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <!--tap phim-->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <TextBlock Style="{StaticResource SmallText}"
+                                           Text="{Binding SelectedItem.NoiDung}"
+                                           Margin="10"/>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Width="auto" Height="45" 
+                     IsEnabled="{Binding canComment, UpdateSourceTrigger=PropertyChanged}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Margin="10"
+                        Height="auto"
+                                Width="auto">
+                        <materialDesign:PackIcon
+                              Kind="CommentEdit"
+                              Width="30"
+                              Height="30"
+                              HorizontalAlignment="Center" />
+                        <TextBlock Text="Bình luận"
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0"
+                                   FontSize="18" FontWeight="Bold"
+                                   HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <!-- Your tab content -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Background="DarkCyan" Margin="10"
+                                CornerRadius="15">
+                            <TextBlock Text="D" FontSize="40"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"/>
+                        </Border>
+
+                        <TextBox  Grid.Column="1"
+                                  Margin="10"
+                                  x:Name="txtCmt"
+                                  FontSize="22"
+                                  Foreground="White"
+                                  VerticalAlignment="Bottom"
+                                  materialDesign:HintAssist.Hint="Bình luận..." />
+
+                        <Button Grid.Column="2"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Height="60"
+                                Width="60"
+                                Content="{materialDesign:PackIcon Send, Size=50}"
+                                ToolTip="Gửi"
+                                Command="{x:Static viewModel:MainViewModel.BinhLuanCommand}"
+                                CommandParameter="{Binding ElementName=txtCmt}"/>
+
+                        <Button Grid.Column="3"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Height="60"
+                                Width="60"
+                                Content="{materialDesign:PackIcon Refresh, Size=50}"
+                                ToolTip="Gửi"
+                                Command="{Binding UpdateValues}"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <ListView ItemsSource="{Binding ListCmt}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Background="DarkCyan" Margin="10"
+                                                CornerRadius="15" Grid.Column="0" Height="60" Width="60">
+                                            <TextBlock Text="D" FontSize="40"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center"
+                                                       Foreground="White"
+                                                       FontWeight="Bold"/>
+                                        </Border>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            
+                                            <!--hoten + date-->
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition MinWidth="600"/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock FontSize="18"
+                                                           Text="{Binding NguoiDung.ThongTin_NguoiDung.Ten}"
+                                                           Grid.Column="0"
+                                                           HorizontalAlignment="Left"
+                                                           VerticalAlignment="Center"
+                                                           Foreground="White"/>
+                                                <TextBlock FontSize="12"
+                                                           Text="{Binding NgayBinhLuan}"
+                                                           Grid.Column="1"
+                                                           HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           Foreground="White"/>
+                                            </Grid>
+                                            
+                                            <!--noi dung bl-->
+                                            <TextBlock FontSize="16" Grid.Row="1"
+                                                       Foreground="White" Margin="10"
+                                                       VerticalAlignment="Bottom"
+                                                       Text="{Binding NoiDung}"/>
+                                        </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+    
+</UserControl>
+

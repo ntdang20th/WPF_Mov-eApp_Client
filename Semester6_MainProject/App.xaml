@@ -1,0 +1,73 @@
+﻿<Application x:Class="Semester6_MainProject.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Semester6_MainProject"
+             xmlns:viewModel="clr-namespace:Semester6_MainProject.MVVM.ViewModel"
+             xmlns:view="clr-namespace:Semester6_MainProject.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/LoginButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/FillterRadioButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ForwardButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ItemTheme.xaml"/>
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:MostWatchView}">
+                <view:MostWatchView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ComingSoonViewModel}">
+                <view:ComingSoonView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:FilterViewModel}">
+                <view:FilterView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:HighRatingViewModel}">
+                <view:HighRatingView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:MostCommentViewModel}">
+                <view:MostCommentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ItemViewModel}">
+                <view:ItemView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:HistoryViewModel}">
+                <view:HistoryView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ResultSearchViewModel}">
+                <view:ResultSearchView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:VIPViewModel}">
+                <view:VIPView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AccountInforViewModel}">
+                <view:TaiKhoanView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+
+
+        
+    </Application.Resources>
+</Application>
